@@ -14,10 +14,14 @@
 	font-style: normal;
 
 }
+.container {
+	max-width: 947px;
+}
 * {
 	font-family: 'Glyphicons Halflings','abadi_mt_condensed_lightRg' !important;
 	word-spacing: -10px;
 }
+h1,h2,h3,h4,h5,h6 {word-spacing: -20px;}
 body {
 	margin: 0;
 	padding: 0;
@@ -36,19 +40,144 @@ body {
 }
 .navbar {
 	font-size: 18px;
+	margin-bottom: 0px;
 }
 .navbar li > a {
 	line-height: 16px;
 }
+.redes-sociais {
+	width: 35px;
+	height: 35px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	background: url(../img/redes-sociais.png) no-repeat;
+	display: inline-block;
+}
+.redes-sociais.facebook {
+	background-position: 0px 0px;
+}
+.redes-sociais.twitter {
+	background-position: -48px 0px;
+}
+.redes-sociais.gplus {
+	background-position: -94px 0px;
+}
+.redes-sociais.instagram {
+	background-position: -140px 0px;
+} 
 .form-control {
+	font-size: 17px;
 	background-color: black;
 	padding-top: 1px;
 }
 .form .form-control, .form .glyphicon {
 	color: white;
 }
-.form .glyphicon {
+.form .glyphicon-search {
 	top: -25px;
 	right: 15px;
 	position: relative;
+}
+input[type="search"].form-control {
+	padding-right: 35px;
+}
+.jumbotron.customBg, .jumbotron img {
+	padding: 0;
+	margin: auto;
+}
+.jumbotron a {
+	color: #444;
+}
+.custom-container {
+	max-width: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.jumbotron .desc {
+	width: 100%;
+	padding: 5px 30px 0px 30px;
+	min-height: 66px;
+	background-color: white;
+	position: absolute;
+	bottom: 10px;
+	border: 1px solid #ccc;
+}
+.jumbotron .controls {
+	width: 62px;
+	height: 57px;
+	text-align: center;
+	font-weight: normal;
+	font-style: normal;
+	color: white;
+	background-color: #262626;
+	position: absolute;
+	bottom: 10px;
+	cursor: pointer;
+}
+.controls.left {
+	left: 0;
+	margin-left: 110px;
+}
+.controls.right {
+	right: 0;
+}
+.jumbotron .desc > h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #00529C;
+}
+.jumbotron .desc > p {
+	word-break: break-word;
+}
+.jumbotron .desc > p:after {
+	content: "\e080";
+	font-weight: bold;
+	color: #00529C;
+	font-size: 13px;
+}
+.jumbotron a:hover .desc {
+	-webkit-box-shadow: 0px 0px 15px #00529C;
+	-moz-box-shadow: 0px 0px 15px #00529C;
+	-ms-box-shadow: 0px 0px 15px #00529C;
+	-o-box-shadow: 0px 0px 15px #00529C;
+	box-shadow: 0px 0px 15px #00529C;
+	-webkit-transition: 0.5s -webkit-box-shadow;
+	-moz-transition: 0.5s -moz-box-shadow;
+	-ms-transition: 0.5s -ms-box-shadow;
+	-o-transition: 0.5s -o-box-shadow;
+	transition: 0.5s box-shadow;
+}
+.left {
+	left: 0;
+	position: relative;
+}
+@media (max-width: 768px) {
+	.logo-search {
+		margin: 20px auto;
+		text-align: center;
+	}
+	.logo-search img {
+		margin-bottom: 15px;
+	}
+	.form .glyphicon-search {
+		top: -32px;
+	}
+	.form-control {
+		min-height: 50px;
+	}
+	a.redes-sociais {
+		padding: 22px;
+	}
+	.redes-sociais {
+		margin-top: 10px;
+		margin-bottom: 0px;
+	}
+	/*.jumbotron .desc {
+		left: 0;
+		margin: 0;
+		top: 20px;
+		height: 100%;
+	}*/
 }
