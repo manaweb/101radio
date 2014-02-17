@@ -1,4 +1,4 @@
-$(document).ready(function() {  
+$(document).ready(function() {
  
 	//Enable swiping...
 	$(".carousel-inner").swipe( {
@@ -10,6 +10,11 @@ $(document).ready(function() {
 			$(this).parent().carousel('prev'); 
 		},
 		//Default is 75px, set to 0 for demo so any distance triggers swipe
-		threshold: 50
+		threshold: 75
 	});
+
+	$('.nav-tabs li a').click(function () {
+		$('.fotos-videos .carousel').carousel('next');
+	});
+
 });
