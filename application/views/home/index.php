@@ -693,21 +693,20 @@
             <div class="pull-right text-right">
               <h4>Gostou? Então compartilhe:</h4>
               <div class="pull-right">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                   <a href="javascript:void(0);" title="Facebook">
                     <span class="redes-sociais facebook"></span>
                   </a>
                 </div>
-               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                   <a href="javascript:void(0);" title="Twitter">
                     <span class="redes-sociais twitter"></span>
                   </a>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <a href="http://manaweb.com.br" title="Maná WEB" class="clearfix">
-                    <img src="{base_url}assets/img/mana-logo.png" alt="Maná WEB">
-                  </a>
-                </div>
+                
+                <a href="http://manaweb.com.br" title="Maná WEB" class="clearfix">
+                  <img src="{base_url}assets/img/mana-logo.png" alt="Maná WEB">
+                </a>
               </div>
             </div>
           </div>
