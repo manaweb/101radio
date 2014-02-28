@@ -12,6 +12,7 @@
 			$data['base_url'] = base_url();
 		    $data['contentPage'] = "painel/index";
 		    $data['pageTitle'] = "Painel de Controle";
+		    $data['nome'] = $this->session->userdata('usuario');
 			$this->parser->parse('shared/index', $data);
 		}
 		

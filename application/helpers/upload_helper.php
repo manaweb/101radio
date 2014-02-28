@@ -12,7 +12,7 @@
 	//
 	if ( ! function_exists('fazerUpload')) {
 
-		 function fazerUpload($caminho, $thumb = FALSE, $proporcoes = array('width' => 150, 'height' => 150, 'principal' => 'width')){
+		 function fazerUpload($caminho, $thumb = FALSE, $proporcoes = array('width' => 150, 'height' => 150, 'principal' => 'width','field_name' => 'upload')){
 		 	$ci = &get_instance();
 			$ci->load->library('image_lib');
 			$config['upload_path'] = "assets/img/".$caminho;
@@ -20,7 +20,7 @@
 			
 			$ci->load->library('upload', $config);
 			$dataImagem = array();
-			if ( ! $ci->upload->do_upload('upload'))
+			if ( ! $ci->upload->do_upload($proporcoes['field_name']))
 			{
 				$error = array('error' => $ci->upload->display_errors());
 	
@@ -29,7 +29,7 @@
 			else
 			{
 				$dataImagem['upload_data'] = $ci->upload->data();
-				if($thumb == true){
+				if($thumb == true) {
 					$configUpload = array(
 						'create_thumb' => TRUE,
 						'width' => $proporcoes['width'],

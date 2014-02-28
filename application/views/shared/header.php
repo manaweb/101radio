@@ -1,3 +1,11 @@
+	<?php
+
+		if (strpos($_SERVER['REQUEST_URI'],'login') === false) {
+			if ($this->session->userdata('log_in') === false)
+				redirect('painel/login');
+		}
+	?>
+	
 	<head>
 		<meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -59,6 +59,7 @@ class Configuracoes extends CI_Controller {
 					array('text', 'Usu&aacute;rio', 'usuario', 'placeholder="Digite o usu&aacute;rio..." required', ''),
 					array('password', 'Senha', 'senha', 'placeholder="Digite a senha do usu&aacute;rio..." required', ''),
 					array('text', 'Privil&eacute;gio', 'privilegio', 'placeholder="Digite o privilegio do usuario..." pattern="([0-9]{1,2})" required', 'Apenas n&uacute;meros'),
+					array('file', 'Avatar', 'avatar', '', '')
 					// array('file', 'Avatar', 'upload', 'required', ''),
 				);
 				$data['campos'] = $this->Toolmodel->painelCampos($campos, 'painel/configuracoes/contas', 'insert', '');
@@ -92,19 +93,22 @@ class Configuracoes extends CI_Controller {
 	    	/* Ações */
 
 	    	case 'insert':
-				// $this->load->helper('upload');
-				// $caminho = "tipoprojeto";
-				// $proporcoes = array(
-				// 	'width' => 170,
-				// 	'height' => 200,
-				// 	'principal' => 'height'
-				// );
-				// $nomeArquivo = fazerUpload($caminho, true, $proporcoes);
+	    		$this->load->library('encrypt');
+				$this->load->helper('upload');
+				$caminho = "avatar";
+				$proporcoes = array(
+					'width' => 118,
+					'height' => 94,
+					'principal' => 'height',
+					'field_name' => 'avatar'
+				);
+				$nomeArquivo = fazerUpload($caminho, true, $proporcoes);
 				$dadosInserir = array(
 					'usuario' => $this->input->post('usuario'),
-					'senha' => $this->input->post('senha'),
+					'senha' => $this->encrypt->encode($this->input->post('senha')),
 					'privilegio' => $this->input->post('privilegio'),
-					'nome' => $this->input->post('nome')
+					'nome' => $this->input->post('nome'),
+					'avatar' => $nomeArquivo
 				);
 				$this->Toolmodel->inserir('contas', $dadosInserir);
 				redirect("painel/configuracoes/contas");
@@ -120,13 +124,13 @@ class Configuracoes extends CI_Controller {
 			break;
 		
 			case 'delete':
-				$this->Toolmodel->excluir('contas', $id);
+				$this->Toolmodel->excluir('contas', $id,'assets'.DIRECTORY_SEPARATOR.'img'.DIRECTORY_SEPARATOR.'avatar'.DIRECTORY_SEPARATOR.'','avatar');
 				redirect("painel/configuracoes/contas");
 			break;
 		
 			case 'mudarFlag':
 				$this->Toolmodel->changeFlag('tipoprojeto', $id);
-				redirect("painel/tipoProjeto/");			
+				redirect("painel/tipoProjeto/");
 			break;
 
 	    	default:

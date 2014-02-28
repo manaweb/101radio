@@ -54,12 +54,21 @@
 		}
 		
 		//recebe uma string com o nome da tabela e uma string com o id da entrada e exclui do banco
-		function excluir($tabela, $id){
+		function excluir($tabela, $id,$path='',$field=''){
 			$this->load->library('session');
 			try {
+				$imgName = $this->find($tabela,$id);
+				$imgName = $imgName[0]->$field;
+				if ($imgName != NULL && !empty($path) && !empty($field)) {
+					$dir = dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR;
+					
+					unlinK($dir.$path."$imgName");
+					unlinK($dir.$path.'thumb'.DIRECTORY_SEPARATOR."$imgName");
+				}
 				$this->db->where('id',$id);
 				$this->db->delete($tabela);
 				$this->session->set_flashdata('messageType', 'success');
+
 				$this->session->set_flashdata('messageText', utf8_encode("Exclusão realizada com sucesso"));
 			} catch (Exception $e) {
 				$this->session->set_flashdata('messageType', 'danger');
@@ -148,53 +157,58 @@
 			$q = $this->db->query($query);
 			$topos = "<th>Ações</th>";
 			$conteudos = "<tr>";
-			
-			for($i = 0; $i < sizeof($campos); $i++){
+			$sizeCampos = sizeof($campos);
+
+			for($i = 0; $i < $sizeCampos; $i++){
 				$topos .=
 					'
 						<th>'.$campos[$i][1].' <i class="fa fa-sort"></i></th>
 					';
 			}
-			
-			foreach ($q->result_array() as $dados){
-				$conteudos .= "<td>";
-				for($i = 0; $i < sizeof($acoes); $i++){
-					switch($acoes[$i]){
-						case 1: 
-							$conteudos .= "<a class='glyphicon glyphicon-pencil' href='".base_url().'painel/'.$controller."/editar/".$dados[$id]."'></a>&nbsp;";
-							break;
-						case 2: 
-							$conteudos .= "<a class='glyphicon glyphicon-remove remover-registro' data-link='".base_url().'painel/'.$controller."/delete/".$dados[$id]."' data-toggle='modal' data-target='.modal-delete'></a>&nbsp;";
-							break;
-						case 3: 
-							if(isset($dados['flag_status'])){
-								if($dados['flag_status'] == false){
-									$conteudos .= "<a class='glyphicon glyphicon-plus-sign' href='".base_url().'painel/'.$controller."/mudarFlag/".$dados[$id]."'></a>&nbsp;";
-								}else{
-									$conteudos .= "<a class='glyphicon glyphicon-minus-sign' href='".base_url().'painel/'.$controller."/mudarFlag/".$dados[$id]."'></a>&nbsp;";
+			if (!$q->result_array()) {
+				$conteudos .= '<td colspan="'.($sizeCampos+1).'" class="text-center">Não há registros</td>';
+			}else {
+				foreach ($q->result_array() as $dados){
+					$conteudos .= "<td>";
+					for($i = 0; $i < sizeof($acoes); $i++){
+						switch($acoes[$i]){
+							case 1: 
+								$conteudos .= "<a class='glyphicon glyphicon-pencil' href='".base_url().'painel/'.$controller."/editar/".$dados[$id]."'></a>&nbsp;";
+								break;
+							case 2: 
+								$conteudos .= "<a class='glyphicon glyphicon-remove remover-registro' data-link='".base_url().'painel/'.$controller."/delete/".$dados[$id]."' data-toggle='modal' data-target='.modal-delete'></a>&nbsp;";
+								break;
+							case 3: 
+								if(isset($dados['flag_status'])){
+									if($dados['flag_status'] == false){
+										$conteudos .= "<a class='glyphicon glyphicon-plus-sign' href='".base_url().'painel/'.$controller."/mudarFlag/".$dados[$id]."'></a>&nbsp;";
+									}else{
+										$conteudos .= "<a class='glyphicon glyphicon-minus-sign' href='".base_url().'painel/'.$controller."/mudarFlag/".$dados[$id]."'></a>&nbsp;";
+									}
 								}
-							}
-							break;
-						case 4: 
-							$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."painel/".$controller."/visualizar/".$dados[$id]."/'></a>&nbsp;";
-							break;
-					}						
-				}
-				$conteudos .= "</td>";
-				for($i = 0; $i < sizeof($campos); $i++){
-					switch($campos[$i][0]){
-						case 'texto': 
-							$conteudos .= "<td>".utf8_decode($dados[$campos[$i][2]])."</td>";
-							break;
-						case 'imagem': 
-							$conteudos .= "<td><a href='".base_url()."assets/img/".$controller."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."assets/img/".$controller."/thumb/".$dados[$campos[$i][2]]."' alt=''></td>";
-							break;
+								break;
+							case 4: 
+								$conteudos .= "<a class='glyphicon glyphicon-zoom-in' href='".base_url()."painel/".$controller."/visualizar/".$dados[$id]."/'></a>&nbsp;";
+								break;
+						}						
 					}
+					$conteudos .= "</td>";
+
+					for($i = 0; $i < $sizeCampos; $i++){
+						switch($campos[$i][0]){
+							case 'texto': 
+								$conteudos .= "<td>".utf8_decode($dados[$campos[$i][2]])."</td>";
+								break;
+							case 'imagem': 
+								$conteudos .= "<td><a href='".base_url()."assets/img/".$controller."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."assets/img/".$controller."/thumb/".$dados[$campos[$i][2]]."' alt=''></td>";
+								break;
+						}
+					}
+					$conteudos .= "</tr>";
+					
 				}
-				$conteudos .= "</tr>";
-				
 			}
-			
+
 			$saida = '
 				<div class="col-lg-12">
 						<a href="'.base_url().'painel/'.$controller.'/cadastrar" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar novo registro</a><br /><br />
