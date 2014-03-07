@@ -6,17 +6,28 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>101FM - Rádio</title>
+        <title>{pageTitle}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+        <link rel="shortcut icon" href="{base_url}assets/img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="{base_url}assets/img/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="{base_url}assets/img/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="{base_url}assets/img/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="{base_url}assets/img/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="{base_url}assets/img/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="{base_url}assets/img/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="{base_url}assets/img/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="{base_url}assets/img/apple-touch-icon-152x152.png" />
         <link rel="stylesheet" href="{base_url}assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="{base_url}assets/css/main.css">
+        <!--[if gt IE 6]>
+          <link rel="stylesheet" type="text/css" href="{base_url}assets/css/main_ie.css">
+        <![endif]-->
     </head>
     <body>
       <!-- Cabeçalho do site -->
       <header>
-      <!--[if lt IE 7]>
+      <!--[if lt IE 9]>
           <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
       <![endif]-->
       <div class="logo-search">
@@ -34,16 +45,16 @@
               </a>
             </div>
             <div class="clearfix pull-right hidden-xs">
-              <a href="javascript:void(0);" title="Facebook">
+              <a href="{site_facebook}" title="Facebook">
                 <span class="redes-sociais facebook"></span>
               </a>
-              <a href="javascript:void(0);" title="Twitter">
+              <a href="{site_twitter}" title="Twitter">
                 <span class="redes-sociais twitter"></span>
               </a>
-              <a href="javascript:void(0);" title="Google+">
+              <a href="{site_gplus}" title="Google+">
                 <span class="redes-sociais gplus"></span>
               </a>
-              <a href="javascript:void(0);" title="Instagram">
+              <a href="{site_instagram}" title="Instagram">
                 <span class="redes-sociais instagram"></span>
               </a>
             </div>
@@ -61,10 +72,10 @@
         <div class="container">
           <div class="navbar-header">
             <div class="hidden-lg hidden-md hidden-sm pull-left">
-              <a href="javascript:void(0);" class="redes-sociais facebook" title="Facebook"></a>
-              <a href="javascript:void(0);" class="redes-sociais twitter" title="Twitter"></a>
-              <a href="javascript:void(0);" class="redes-sociais gplus" title="Google+"></a>
-              <a href="javascript:void(0);" class="redes-sociais instagram" title="Instagram"></a>
+              <a href="{site_facebook}" class="redes-sociais facebook" title="Facebook"></a>
+              <a href="{site_twitter}" class="redes-sociais twitter" title="Twitter"></a>
+              <a href="{site_gplus}" class="redes-sociais gplus" title="Google+"></a>
+              <a href="{site_instagram}" class="redes-sociais instagram" title="Instagram"></a>
             </div>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="icon-bar"></span>
@@ -79,11 +90,11 @@
                 <a href="#" class="glyphicon glyphicon-home hidden-xs hidden-sm"></a>
               </li>
               <li><a href="#">A R&aacute;dio</a></li>
-              <li><a href="#">Abrang&ecirc;ncia</a></li>
-              <li><a href="#">Programa&ccedil;&atilde;o</a></li>
-              <li><a href="#">Equipe</a></li>
-              <li><a href="#">Noticias</a></li>
-              <li><a href="#">Video</a></li>
+              <li><a href="#" class="move-menu">Abrang&ecirc;ncia</a></li>
+              <li><a href="#" class="move-menu">Programa&ccedil;&atilde;o</a></li>
+              <li><a href="#" class="move-menu">Equipe</a></li>
+              <li><a href="#" class="move-menu">Noticias</a></li>
+              <li><a href="#" class="move-menu">Video</a></li>
               <li><a href="#">Fale Conosco</a></li>
             </ul>
           </div><!--/.navbar-collapse -->
@@ -157,8 +168,8 @@
       <div class="row fotos-videos">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs borderLessRadius">
-            <li class="active fotos"><a href="#fotos" data-toggle="tab">Fotos</a></li>
-            <li class="videos"><a href="#videos" data-toggle="tab">Vídeos</a></li>
+            <li class="active fotos"><a href="#fotos" data-toggle="tab" class="padding-menu">Fotos</a></li>
+            <li class="videos"><a href="#videos" data-toggle="tab" class="padding-menu">Vídeos</a></li>
           </ul>
           <button type="button" class="no-ar online pull-right">+</button>
           <div class="retangulo-conteudo">
@@ -694,12 +705,12 @@
               <h4>Gostou? Então compartilhe:</h4>
               <div class="pull-right">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                  <a href="javascript:void(0);" title="Facebook">
+                  <a href="{site_facebook}" title="Facebook">
                     <span class="redes-sociais facebook"></span>
                   </a>
                 </div>
                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                  <a href="javascript:void(0);" title="Twitter">
+                  <a href="{site_twitter}" title="Twitter">
                     <span class="redes-sociais twitter"></span>
                   </a>
                 </div>
@@ -720,5 +731,9 @@
         <script src="{base_url}assets/js/vendor/bootstrap.min.js"></script>
         <script src="{base_url}assets/js/swipe.js"></script>
         <script src="{base_url}assets/js/main.js"></script>
+        <script>
+          if (document.documentMode >= 9)
+            $('head').append('<link rel="stylesheet" type="text/css" href="{base_url}assets/css/main_ie.css">');
+        </script>
     </body>
 </html>

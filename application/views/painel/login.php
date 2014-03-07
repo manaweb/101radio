@@ -1,6 +1,11 @@
 <!DOCTYPE>
 <html>
-	<?php $this->load->view('shared/header'); ?>
+	<?php
+		if ($this->session->userdata('log_in') != NULL)
+			redirect('painel/');
+		else
+			$this->load->view('shared/header');
+	?>
 	
 	<body>
 		<div class="section">
@@ -8,7 +13,7 @@
 				<div class="row">
 					<div class="alert alert-success alert-dismissable" style="display: none">
 					  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					  <span><strong>Warning!</strong> Better check yourself, you're not looking too good.</span>
+					  <span></span>
 					</div>
 					<div class="panel panel-primary">
 						<div class="panel-heading">
@@ -28,6 +33,7 @@
 										<input type="password" class="form-control" id="txtPassword" name="txtPassword" maxlength="88" required>
 									</div>
 								</div>
+								<input type="hidden" name="url" id="url" value="{base_url}" />
 								<button class="btn btn-primary btn-md pull-right">Logar</button>
 							</form>
 						</div>
@@ -59,7 +65,7 @@
 								$('.btn-primary',parent).text('Redirecionando');
 								$('.alert span').text('Autenticação confirmada, aguarde...');
 								$('.alert').removeClass('alert-danger').addClass('alert-success').fadeIn('slow');
-								window.location = '../painel/';
+								window.location = 'home';
 							}
 						}
 					});

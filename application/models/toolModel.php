@@ -105,33 +105,6 @@
 			$this->image_lib->resize();
 		}
 		
-		
-		//verifica no banco se existe um usuário com login e senha iguais aos informados
-		function login($user, $password){
-			$this->db->select('Id, txtLogin, txtSenha');
-		    $this->db->from('PainelUsuario');
-		    $this->db->where('txtlogin', $this->db->escape_str($user));
-		    $this->db->where('txtSenha', $this->db->escape_str(MD5($password)));
-		    $this->db->where('boolstatus', TRUE);
-		    $this->db->limit(1);
-		    $query = $this->db->get();
-		    if($query -> num_rows() == 1){
-		      	return $query->result();
-		    }
-		    else{
-		    	$this->load->library('session');
-		      	$this->session->set_flashdata('messageType', 'danger');
-				$this->session->set_flashdata('messageText', utf8_encode("Usuário ou senha incorretos"));
-				return false;
-		    }
-		}
-		
-		//verifica se o usuário está logado no sistema
-		function verificaLogado(){
-			if (empty($_SESSION['Admin']['login']))
-				redirect('/painel/painel/login');
-		}
-		
 		//cria uma tabela de listagem com os seguintes parâmetros passados
 		/*
 		 * $campos = array(

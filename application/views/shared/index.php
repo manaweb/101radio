@@ -29,7 +29,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="{base_url}painel/configuracoes/contas"><i class="fa fa-user"></i> Contas</a></li>
-                <li><a href="{base_url}painel/"><i class="fa fa-desktop"></i> Site</a></li>
+                <li><a href="{base_url}painel/configuracoes/site"><i class="fa fa-desktop"></i> Informações do site</a></li>
               </ul>
             </li>
             <!--<li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
@@ -84,7 +84,7 @@
                 <li class="divider"></li>
                 <li><a href="#">View Inbox <span class="badge">7</span></a></li>
               </ul>
-            </li>-->
+            </li>
             <li class="dropdown alerts-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -97,16 +97,15 @@
                 <li class="divider"></li>
                 <li><a href="#">View All</a></li>
               </ul>
-            </li>
+            </li>-->
             <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {nome} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#"><img src="{base_url}assets/img/avatar/thumb/mlkdoido.png"></a></li>
+                {menu_avatar}
                 <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
-                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <!--<li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>-->
                 <li class="divider"></li>
-                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+                <li><a href="{base_url}painel/logout"><i class="fa fa-power-off"></i> Log Out</a></li>
               </ul>
             </li>
           </ul>

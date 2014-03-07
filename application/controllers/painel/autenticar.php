@@ -6,7 +6,7 @@ class Autenticar extends CI_Controller {
 		$this->load->library('encrypt');
 		$user = $this->input->post('txtUser');
 		$pass = $this->input->post('txtPassword');
-		$query = $this->db->query("SELECT usuario,senha FROM contas WHERE usuario = '$user'");
+		$query = $this->db->query("SELECT * FROM contas WHERE usuario = '$user'");
 		$dataUser = $query->result();
 		$retorno = array();
 		if ($query->num_rows > 0 && $this->encrypt->decode($dataUser[0]->senha) == $pass) {

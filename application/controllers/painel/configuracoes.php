@@ -2,9 +2,10 @@
 
 class Configuracoes extends CI_Controller {
 
-	public function __construct() {
-		parent::__construct();
+	function index() {
+		redirect("{$base_url}painel/configuracoes/contas");
 	}
+
 
 	function menus() {
 		// $this->load->library('session');
@@ -33,7 +34,6 @@ class Configuracoes extends CI_Controller {
 
 	function contas($action='',$id=0) {
 		// $this->load->library('encrypt');
-		$this->load->library('session');
 		$mensagem = " hidden";
 		if($this->session->flashdata('messageType') != null){
 			$mensagem = $this->session->flashdata('messageType');
@@ -150,9 +150,72 @@ class Configuracoes extends CI_Controller {
 	    }
 	    
 		//$this->output->cache(5);
+		$data['nome'] = $this->session->userdata('nome');
+		$data['avatar'] = $this->session->userdata('avatar');
+		$data['menu_avatar'] = $this->session->userdata('menu_avatar');
 		$this->parser->parse('shared/index',$data);
 	}
 
-	//receber dados via POST e cadastrar no banco
+	function site($action='') {
+
+		$mensagem = " hidden";
+		if($this->session->flashdata('messageType') != null){
+			$mensagem = $this->session->flashdata('messageType');
+		}
+		$data['message'] = '<div class="alert alert-'.$mensagem.'">'.$this->session->flashdata('messageText').'</div>';
+		$data['base_url'] = base_url();
+	    $data['contentPage'] = "painel/configuracoes/contas";
+	    $data['pageTitle'] = "Gerenciar Informações do Site";
+		$data['itens'] = array(
+			array("nome" => 'Configurações', 'icone' => 'fa fa-gear', 'url' => "painel"),
+			array("nome" => 'Informações do site', 'icone' => 'fa fa-user', 'url' => "painel/configuracoes/site")
+		);
+		$data['contentPage'] = "painel/global/cadastrar";
+    	$data['pageTitle'] .= " - Editar";
+
+		switch($action) {
+			case 'update':
+				$dadosUpdate = array(
+					'id' => $this->input->post('Id'),
+					'titulo' => $this->input->post('titulo'),
+					'email' => $this->input->post('email'),
+					'email_orcamento' => $this->input->post('email_orcamento'),
+					'youtube' => $this->input->post('youtube'),
+					'instagram' => $this->input->post('instagram'),
+					'facebook' => $this->input->post('facebook'),
+					'gplus' => $this->input->post('gplus'),
+					'twitter' => $this->input->post('twitter'),
+				);
+				$this->Toolmodel->alterar('informacoes', $dadosUpdate);
+				$this->session->unset_userdata('site_titulo');
+				$this->session->unset_userdata('site_email');
+				$this->session->unset_userdata('site_email_orcamento');
+				$this->session->unset_userdata('site_facebook');
+				$this->session->unset_userdata('site_twitter');
+				$this->session->unset_userdata('site_instagram');
+				$this->session->unset_userdata('site_gplus');
+				$this->session->unset_userdata('site_youtube');
+				redirect("painel/configuracoes/site");
+			break;
+		}
+		
+		$campos = array(
+			array('text', 'Titulo do site', 'titulo', 'placeholder="Digite o título que irá aparecer no site..." required', ''),
+			array('text', 'E-mail de contato', 'email', 'placeholder="Digite o email de contato aqui..." ', ''),
+			//array('text', 'E-mail de or&ccedil;amento', 'email_orcamento', 'placeholder="Digite o email para or&ccedil;amento aqui..." ', ''),
+			array('text', 'Facebook', 'facebook', 'placeholder="Digite aqui a URL da sua p&aacute;gina facebook..." ', ''),
+			//array('text', 'Youtube', 'youtube', 'placeholder="Digite aqui a URL do seu canal no youtube..." ', ''),
+			array('text', 'Twitter', 'twitter', 'placeholder="Digite aqui a URL do seu twitter..." ', ''),
+			array('text', 'Google+', 'gplus', 'placeholder="Digite aqui a URL do seu Google+" ', ''),
+			array('text', 'Instagram', 'instagram', 'placeholder="Digite aqui a URL do seu instagram..." ', ''),
+
+		);
+		
+		$data['nome'] = $this->session->userdata('nome');
+		$data['avatar'] = $this->session->userdata('avatar');
+		$data['menu_avatar'] = $this->session->userdata('menu_avatar');
+		$data['campos'] = $this->Toolmodel->painelCampos($campos, 'painel/configuracoes/site', 'update', 1, 'informacoes');
+		$this->parser->parse('shared/index',$data);
+	}
 		
 }
