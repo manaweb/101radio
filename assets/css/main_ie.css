@@ -1,0 +1,10 @@
+.form-control {
+	padding-top: 5px; 
+}
+.move-menu {
+	top: 4px;
+	position: relative;
+}
+.padding-menu {
+	padding-top: 10px !important;
+}
