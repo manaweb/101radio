@@ -133,30 +133,38 @@
                     <div class="carousel-inner">
                       <ul class="list-unstyled videos item active">
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                       </ul>
                       <ul class="list-unstyled videos item">
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                         <li class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI" frameborder="0" allowfullscreen></iframe>
+                          <a href="javascript:void(0)" class="mascara"></a>
+                          <iframe src="http://www.youtube.com/embed/Pn-6eOxnEMI?autoplay=0&autohide=1&controls=0&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                         </li>
                       </ul>
                     </div>
@@ -192,16 +200,16 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
                   <ul class="pagination borderLessRadius">
-                    <li><a href="#">01</a></li>
-                    <li><a href="#">02</a></li>
-                    <li><a href="#">03</a></li>
-                    <li><a href="#">04</a></li>
-                    <li><a href="#">05</a></li>
-                    <li><a href="#">06</a></li>
-                    <li><a href="#">07</a></li>
-                    <li><a href="#">08</a></li>
-                    <li><a href="#">09</a></li>
-                    <li><a href="#">10</a></li>
+                    <li><a href="#" class="padding-menu">01</a></li>
+                    <li><a href="#" class="padding-menu">02</a></li>
+                    <li><a href="#" class="padding-menu">03</a></li>
+                    <li><a href="#" class="padding-menu">04</a></li>
+                    <li><a href="#" class="padding-menu">05</a></li>
+                    <li><a href="#" class="padding-menu">06</a></li>
+                    <li><a href="#" class="padding-menu">07</a></li>
+                    <li><a href="#" class="padding-menu">08</a></li>
+                    <li><a href="#" class="padding-menu">09</a></li>
+                    <li><a href="#" class="padding-menu">10</a></li>
                     <li><a href="#"><span class="min">+</span></a></li>
                   </ul>
                 </div>
@@ -241,21 +249,21 @@
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <a href="javascript:void(0);" title="Facebook">
+            <a href="{site_facebook}" title="Facebook">
               <div class="redesMetro facebook">
                 <span></span>
               </div>
             </a>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 item">
-            <a href="javascript:void(0);" title="Twitter">
+            <a href="{site_twitter}" title="Twitter">
               <div class="redesMetro twitter">
                 <span></span>
               </div>
             </a>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 item">
-            <a href="javascript:void(0);" title="Instagram">
+            <a href="{site_instagram}" title="Instagram">
               <div class="redesMetro instagram">
                 <span></span>
               </div>
@@ -503,7 +511,7 @@
             </div>
           </div>
         </div>
-        <div class="row fale-conosco">
+        <div class="row fale-conosco" id="faleconosco">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3 class="tabs padding-menu"><a href="javascript:void(0);" title="Fale Conosco">Fale Conosco</a></h3>
             <div class="row">
@@ -543,7 +551,7 @@
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <iframe width="80%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" class="hidden-sm hidden-xs" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=pt-BR&amp;geocode=&amp;q=Rua.+M%C3%A1rio+Guarita+Cartaxo,+N%C2%B0+123+-+Jaboticabal&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=61.323728,135.263672&amp;ie=UTF8&amp;hq=Rua.+M%C3%A1rio+Guarita+Cartaxo,+N%C2%B0+123+-+Jaboticabal&amp;hnear=&amp;radius=15000&amp;ll=-21.255796,-48.339575&amp;spn=0.008969,0.016512&amp;t=m&amp;z=14&amp;iwloc=A&amp;cid=7316770744456930095&amp;output=embed"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.3966897977634!2d-48.33954568491827!3d-21.25575956346427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b96ba0f5930293%3A0x658a6439e653632f!2sR%C3%A1dio+101FM!5e0!3m2!1spt-BR!2sus!4v1395657846215" width="80%" height="350" frameborder="0" style="border:0"></iframe>
               </div>
             </div>
             <div class="row text-center conteudo hidden-xs hidden-sm">
@@ -588,7 +596,7 @@
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-default btn-lg pull-right">Enviar</button>
+              <button type="submit" class="btn btn-default btn-lg pull-right padding-menu">Enviar</button>
             </form>
           </div>
         </div>

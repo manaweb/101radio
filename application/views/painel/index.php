@@ -114,7 +114,10 @@
           <div class="col-lg-12">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Traffic Statistics: October 1, 2013 - October 31, 2013</h3>
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Gráficos de Visitas e Visualizações de Páginas <a href="javascript:void(0);" class="pull-right" title="Atualizar Gráfico">
+                  <i class="glyphicon glyphicon-refresh"></i>
+                </a></h3>
+                
               </div>
               <div class="panel-body">
                 <div id="morris-chart-area"></div>
@@ -123,7 +126,7 @@
           </div>
         </div><!-- /.row -->
 
-        <div class="row">
+        <!--<div class="row">
           <div class="col-lg-4">
             <div class="panel panel-primary">
               <div class="panel-heading">
@@ -255,9 +258,16 @@
                   <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
         </div><!-- /.row -->
         <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-	    <script src="{base_url}assets/js/morris/chart-data-morris.js"></script>
+        <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+        <script src="{base_url}assets/js/morris/chart-data-morris.js"></script>
+        <script>
+          $('a > .glyphicon.glyphicon-refresh').click(function() {
+            var objRetorno = getJson(url+'/externs/ga/get/80324530/area/destroy');
+            ChartArea.clean('morris-chart-area');
+            ChartArea.invoke('morris-chart-area');
+          });
+        </script>

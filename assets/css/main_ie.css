@@ -8,3 +8,12 @@
 .padding-menu {
 	padding-top: 10px !important;
 }
+.equipe .tarja {
+	background: url(../img/tarja-mais.png) no-repeat 90% 50% #B30102;
+}
+.grid-group .padding-menu {
+	padding-top: 30px !important;
+}
+.grid-group.noAr span {
+	background-color: #D80404;
+}

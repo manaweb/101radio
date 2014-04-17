@@ -3,6 +3,7 @@
       <!--[if lt IE 9]>
           <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
       <![endif]-->
+      {loginPainel}
       <div class="logo-search">
         <div class="container">
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -63,12 +64,13 @@
                 <a href="home" class="glyphicon glyphicon-home hidden-xs hidden-sm"></a>
               </li>
               <li><a href="aradio">A R&aacute;dio</a></li>
-              <li><a href="#" class="move-menu">Abrang&ecirc;ncia</a></li>
-              <li><a href="#" class="move-menu">Programa&ccedil;&atilde;o</a></li>
-              <li><a href="#" class="move-menu">Equipe</a></li>
+              <li><a href="abrangencia" class="move-menu">Abrang&ecirc;ncia</a></li>
+              <li><a href="programacao" class="move-menu">Programa&ccedil;&atilde;o</a></li>
+              <li><a href="equipe" class="move-menu">Equipe</a></li>
               <li><a href="#" class="move-menu">Noticias</a></li>
-              <li><a href="#" class="move-menu">Video</a></li>
-              <li><a href="#">Fale Conosco</a></li>
+              <li><a href="fotos" class="move-menu">Fotos</a></li>
+              <li><a href="videos" class="move-menu">Videos</a></li>
+              <li><a href="home#faleconosco">Fale Conosco</a></li>
             </ul>
           </div><!--/.navbar-collapse -->
         </div>

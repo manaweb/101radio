@@ -22,7 +22,22 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav side-nav">
-            <li><a href="{base_url}painel"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+            <li><a href="{base_url}painel"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li>
+              <a href="{base_url}painel/radio"><i class="glyphicon glyphicon-headphones"></i> A Rádio</a>
+            </li>
+            <li>
+              <a href="{base_url}painel/programacao"><i class="fa fa-calendar"></i> Programação</a>
+            </li>
+            <li>
+              <a href="{base_url}painel/equipe"><i class="fa fa-users"></i> Equipe</a>
+            </li>
+            <li>
+              <a href="{base_url}painel/video"><i class="glyphicon glyphicon-play"></i> Video</a>
+            </li>
+            <li>
+              <a href="{base_url}painel/album"><i class="fa fa-picture-o"></i> Album</a>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-gear"></i> Configurações <b class="caret"></b>
@@ -98,11 +113,12 @@
                 <li><a href="#">View All</a></li>
               </ul>
             </li>-->
+            <li><a href="{base_url}" target="_blank"><i class="glyphicon glyphicon-home"></i> Ir para o site</a></li>
             <li class="dropdown user-dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {nome} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 {menu_avatar}
-                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-user"></i> Perfil</a></li>
                 <!--<li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>-->
                 <li class="divider"></li>
                 <li><a href="{base_url}painel/logout"><i class="fa fa-power-off"></i> Log Out</a></li>

@@ -1,25 +1,63 @@
 // First Chart Example - Area Line Chart
 
-Morris.Area({
-  // ID of the element in which to draw the chart.
-  element: 'morris-chart-area',
-  // Chart data records -- each entry in this array corresponds to a point on
-  // the chart.
-  data: [
-	{ d: '2014-02-14', visits: 1500},
-	{ d: '2014-02-13', visits: 2000},
-	{ d: '2014-02-11', visits: 10000},
-  ],
-  // The name of the data record attribute that contains x-visitss.
-  xkey: 'd',
-  // A list of names of data record attributes that contain y-visitss.
-  ykeys: ['visits'],
-  // Labels for the ykeys -- will be displayed when you hover over the
-  // chart.
-  labels: ['Visits'],
-  // Disables line smoothing
-  smooth: false,
-});
+var url = window.location.toString();
+url = url.split('/');
+for (i = 3;i < url.length;i++)
+  url.pop();
+url = url.join('/');
+
+function getJson(url) {
+ return JSON.parse($.ajax({
+     type: 'GET',
+     url: url,
+     dataType: 'json',
+     global: false,
+     async:false,
+     success: function(data) {
+         return data;
+     }
+ }).responseText);
+}
+
+var ChartArea = (function(id) {
+  return {
+      invoke: function(id) {
+        var objRetorno = getJson(url+'/externs/ga/get/80324530');
+        Morris.Area({
+          // ID of the element in which to draw the chart.
+          element: id,
+          // Chart data records -- each entry in this array corresponds to a point on
+          // the chart.
+          data: objRetorno,
+          // The name of the data record attribute that contains x-visitss.
+          xkey: ['y'],
+          // A list of names of data record attributes that contain y-visitss.
+          ykeys: ['visits','pageviews'],
+          // Labels for the ykeys -- will be displayed when you hover over the
+          // chart.
+          labels: ['Visitas','Visualizações de páginas'],
+          // Disables line smoothing
+          smooth: false,
+          xLabelFormat: function(d) {
+              var dia = d.getDate();
+              var mes = d.getMonth()+1;
+              return (dia < 10 ? '0'+dia : dia)+'/'+(mes < 10 ? '0'+mes : mes)+'/'+d.getFullYear(); 
+          },
+          dateFormat: function (ts) {
+            var d = new Date(ts);
+            var dia = d.getDate();
+            var mes = d.getMonth()+1;
+            return(dia < 10 ? '0'+dia : dia)+'/'+(mes < 10 ? '0'+mes : mes)+'/'+d.getFullYear(); 
+          }
+        });
+      },
+    clean: function(id) {
+      $('#'+id).html('');
+    }
+  }
+})();
+
+ChartArea.invoke('morris-chart-area');
 
 Morris.Donut({
   element: 'morris-chart-donut',
@@ -32,7 +70,7 @@ Morris.Donut({
   formatter: function (y) { return y + "%" ;}
 });
 
-Morris.Line({
+/*Morris.Line({
   // ID of the element in which to draw the chart.
   element: 'morris-chart-line',
   // Chart data records -- each entry in this array corresponds to a point on
@@ -98,3 +136,4 @@ Morris.Bar ({
   xLabelAngle: 35,
   hideHover: 'auto'
 });
+*/

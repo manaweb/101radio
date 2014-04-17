@@ -1,4 +1,17 @@
-/* 
+.glyphicon.glyphicon-refresh {
+  -webkit-transition-duration: transform 0.3s;
+  -moz-duration-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+a:active > .glyphicon.glyphicon-refresh{
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}12'1 /* 
 Author: Start Bootstrap - http://startbootstrap.com
 'SB Admin' HTML Template by Start Bootstrap
 
@@ -21,6 +34,7 @@ body {
 #page-wrapper {
   width: 100%;
   padding: 5px 15px;
+  margin-top: 40px;
 }
 
 /* Nav Messages */
@@ -167,4 +181,32 @@ table.tablesorter thead tr th:hover {
 }
 .dropdown-menu a > img {
   margin-bottom: 5px;
+}
+.glyphicon.glyphicon-refresh {
+  -webkit-transition-duration: transform 0.3s;
+  -moz-duration-duration: 0.3s;
+  -ms-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+a:active > .glyphicon.glyphicon-refresh{
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.bootstrap-datetimepicker-widget>ul {
+  margin: 0;
+  padding: 0;
+}
+.date {
+  width: 200px;
+  height: auto;
+}
+.dow {
+  width: auto;
+}
+iframe.video {
+  height: 220px;
 }

@@ -12,7 +12,7 @@
 	    }
 		
 	    //retorna somente algumas entradas da tabela especificada
-	    //caso $limit n„o seja especificada ser„o retornados todas as entradas da tabela
+	    //caso $limit n√£o seja especificada ser√£o retornados todas as entradas da tabela
 	    function getSomeEntries($table, $limit=0){
 	    	$limite = $limit == 0 ? "" : " LIMIT $limit";
 	    	$query = $this->db->query('SELECT * FROM '.$table.$limite);
@@ -46,7 +46,7 @@
 				$this->db->where('id', $dados['id']);
 				$this->db->update($tabela, $dados);
 				$this->session->set_flashdata('messageType', 'success');
-				$this->session->set_flashdata('messageText', utf8_encode("AlteraÁ„o realizada com sucesso"));
+				$this->session->set_flashdata('messageText', utf8_encode("Altera√ß√£o realizada com sucesso"));
 			} catch (Exception $e) {
 				$this->session->set_flashdata('messageType', 'danger');
 				$this->session->set_flashdata('messageText', "Erro: ".$e->getMessage());
@@ -69,7 +69,7 @@
 				$this->db->delete($tabela);
 				$this->session->set_flashdata('messageType', 'success');
 
-				$this->session->set_flashdata('messageText', utf8_encode("Exclus„o realizada com sucesso"));
+				$this->session->set_flashdata('messageText', utf8_encode("Exclus√£o realizada com sucesso"));
 			} catch (Exception $e) {
 				$this->session->set_flashdata('messageType', 'danger');
 				$this->session->set_flashdata('messageText', "Erro: ".$e->getMessage());
@@ -98,21 +98,21 @@
 			}		
 		}
 		
-		//recebe um array com as configuraÁıes da miniatura a ser criada e cria a miniatura
-		//ver documentaÁ„o da classe de manipulaÁ„o de imagens codeigniter 'http://ellislab.com/codeigniter/user-guide/libraries/image_lib.html'
+		//recebe um array com as configura√ß√µes da miniatura a ser criada e cria a miniatura
+		//ver documenta√ß√£o da classe de manipula√ß√£o de imagens codeigniter 'http://ellislab.com/codeigniter/user-guide/libraries/image_lib.html'
 		function criarThumb($configThumb){
 			$this->image_lib->initialize($configUpload);
 			$this->image_lib->resize();
 		}
 		
-		//cria uma tabela de listagem com os seguintes par‚metros passados
+		//cria uma tabela de listagem com os seguintes par√¢metros passados
 		/*
 		 * $campos = array(
 		 * 	array($tipo, $titulo, $campoNaTabela)
 		 * )
 		 * Onde:
 		 *     $tipo = 'texto' || 'imagem'
-		 *     $titulo = 'string q ser· o cabeÁalho da coluna'
+		 *     $titulo = 'string q ser√° o cabe√ßalho da coluna'
 		 *     $campoNaTabela = 'nome do campo no banco de dados'
 		 * 
 		 * $acoes = array(x, y, ... , n);
@@ -124,11 +124,11 @@
 		 * $query = 'comando sql desejado'
 		 * 
 		 *
-		 *$controller = 'controller que est· chamando a funÁ„o'		 
+		 *$controller = 'controller que est√° chamando a fun√ß√£o'		 
 		 * */
-		function painelListar($campos, $query, $acoes, $controller,$id='Id'){
+		function painelListar($campos, $query, $acoes, $controller,$id='Id',$acoesIgnoreNovoRegistro=false){
 			$q = $this->db->query($query);
-			$topos = "<th>AÁıes</th>";
+			$topos = "<th>A&ccedil;&otilde;es</th>";
 			$conteudos = "<tr>";
 			$sizeCampos = sizeof($campos);
 
@@ -139,7 +139,7 @@
 					';
 			}
 			if (!$q->result_array()) {
-				$conteudos .= '<td colspan="'.($sizeCampos+1).'" class="text-center">N„o h· registros</td>';
+				$conteudos .= '<td colspan="'.($sizeCampos+1).'" class="text-center">N√£o h√° registros</td>';
 			}else {
 				foreach ($q->result_array() as $dados){
 					$conteudos .= "<td>";
@@ -173,7 +173,17 @@
 								$conteudos .= "<td>".utf8_decode($dados[$campos[$i][2]])."</td>";
 								break;
 							case 'imagem': 
-								$conteudos .= "<td><a href='".base_url()."assets/img/".$controller."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."assets/img/".$controller."/thumb/".$dados[$campos[$i][2]]."' alt=''></td>";
+								$conteudos .= "<td><a href='".base_url()."assets/img/".($acoesIgnoreNovoRegistro ? preg_replace('/(acoes)|(\/)/','',$controller) : $controller)."/".$dados[$campos[$i][2]]."' target='_blank'><img src='".base_url()."assets/img/".($acoesIgnoreNovoRegistro ? preg_replace('/(acoes)|(\/)/','',$controller) : $controller)."/thumb/".$dados[$campos[$i][2]]."' alt=''></td>";
+								break;
+							case 'video':
+								$conteudos .= "<td><iframe src='".$dados[$campos[$i][2]]."'' frameborder='0' allowfullscreen='' style='height: 220px;'></iframe></td>";
+								break;
+							case 'data':
+								$this->load->helper('dow');
+								$conteudos .= "<td>".utf8_decode(dow_text($dados[$campos[$i][2]]))."</td>";
+								break;
+							case 'data-br':
+								$conteudos .= "<td>".date('d/m/Y',strtotime($dados[$campos[$i][2]]))."</td>";
 								break;
 						}
 					}
@@ -184,7 +194,7 @@
 
 			$saida = '
 				<div class="col-lg-12">
-						<a href="'.base_url().'painel/'.$controller.'/cadastrar" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar novo registro</a><br /><br />
+						<a href="'.base_url().'painel/'.($acoesIgnoreNovoRegistro ? preg_replace('/(acoes)|(\/)/','',$controller) : $controller).'/cadastrar" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar novo registro</a><br /><br />
             <div class="table-responsive">
               <table class="table table-bordered table-hover table-striped tablesorter">
                 <thead>
@@ -204,8 +214,8 @@
 			      <div class="modal-content">
 			
 			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">◊</button>
-			          <h4 class="modal-title" id="mySmallModalLabel">ConfirmaÁ„o de Exclus„o</h4>
+			          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">√ó</button>
+			          <h4 class="modal-title" id="mySmallModalLabel">Confirma√ß√£o de Exclus√£o</h4>
 			        </div>
 			        <div class="modal-body">
 			          Tem certeza que deseja excluir este registro?
@@ -225,12 +235,17 @@
 
 	
 	// array('text', 'Nome', 'txtNome', 'placeholder="asdasdasd" required', 'comentarios1');
-	//funÁ„o para criar campos de um formul·rio de acordo com os par‚metros passados
+	//fun√ß√£o para criar campos de um formul√°rio de acordo com os par√¢metros passados
 	// $campos = array('tipo', 'nomeNaLabel', 'nameDoInput', 'atributosAdicionais', 'comentarios sobre o campo');
-	// $controller = "controller q est· chamando a funÁ„o";
-	// $funcaoDestino = "funÁ„o no controller q È o action do formul·rio(geralmente insert ou update), tendo por padrao insert";
-	// $id = par‚metro contendo o Id caso a funÁao seja update
+	// $controller = "controller q est√° chamando a fun√ß√£o";
+	// $funcaoDestino = "fun√ß√£o no controller q √© o action do formul√°rio(geralmente insert ou update), tendo por padrao insert";
+	// $id = par√¢metro contendo o Id caso a fun√ßao seja update
 	function painelCampos($campos, $controller, $funcaoDestino, $id = 0, $tabela = ''){
+
+		static $DTP = false;
+		static $CKEDITOR = false;
+		static $VIDEO = false;
+
 		$saida = "<div class='col-lg-12'><form role='form' method='post' action=".base_url().$controller."/".$funcaoDestino." enctype='multipart/form-data'>";
 		$campo = ""; 
 		for($i = 0; $i < sizeof($campos); $i++){
@@ -246,11 +261,118 @@
 					}else
 						$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3]." value='".utf8_decode($dados[$campos[$i][2]])."' />";
 					break;
+				case 'text-video':
+					$campo = "<input type='".$campos[$i][0]."' class='form-control video' name='".$campos[$i][2]."' ".$campos[$i][3]." value='".$dados[$campos[$i][2]]."' />";
+					break;
+				case 'editor':
+					if (!$CKEDITOR) {
+						$campo = '<script src="'.base_url().'assets/ckeditor/ckeditor.js"></script>';
+						$campo .= '<textarea class="ckeditor form-control" name="'.$campos[$i][2].'" '.$campos[$i][3].'>'.$dados[$campos[$i][2]].'</textarea>';
+					}else
+						$campo .= '<textarea class="ckeditor form-control" name="'.$campos[$i][2].'" '.$campos[$i][3].'>'.$dados[$campos[$i][2]].'</textarea>';
+				break;
+				break;
 				case 'password':
 					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3]." value='".utf8_decode($dados[$campos[$i][2]])."' />";
 				break;
 				case 'file':
 					$campo = "<input type='".$campos[$i][0]."' class='form-control' name='".$campos[$i][2]."' ".$campos[$i][3]." />";
+					break;
+				case 'dow':
+						$campo = "<select class='form-control dow' name='".$campos[$i][2]."' ".$campos[$i][3].">";
+						$campo .= '<option selected>Selecione um dia da semana</option>';
+						$campo .= '<option value="1">Segunda-feira</option>';
+						$campo .= '<option value="2">Ter√ßa-feira</option>';
+						$campo .= '<option value="3">Quarta-feira</option>';
+						$campo .= '<option value="4">Quinta-feira</option>';
+						$campo .= '<option value="5">Sexta-feira</option>';
+						$campo .= '<option value="6">S√°bado</option>';
+						$campo .= '<option value="0">Domingo</option>';
+						$campo .= "</select>";
+					break;
+				case 'date':
+					if (!$isIncluded) {
+						$campo = '<link rel="stylesheet" href="'.base_url().'assets/css/bootstrap-datetimepicker.min.css">
+									<script src="'.base_url().'assets/js/moment.js"></script>
+									<script src="'.base_url().'assets/js/bootstrap-datetimepicker.min.js"></script>
+									<script>
+									$(window).load(function() {
+										$(".date").datetimepicker({
+											pickTime: false,
+											format: "DD/MM/YYYY"
+										});
+									});
+								</script>';
+						$campo .= '<div class="form-group">
+					                <div class="input-group date">
+					                    <input type="text" class="form-control" name="'.$campos[$i][2].'" "'.$campos[$i][3].'" value="'.$dados[$campos[$i][2]].'"  />
+					                    <span class="input-group-addon"><span class="fa fa-calendar"></span>
+					                    </span>
+					                </div>
+					            </div>';
+						$isIncluded = true;
+					}else
+
+					$campo = '<div class="form-group">
+					                <div class="input-group date">
+					                    <input type="text" class="form-control" name="'.$campos[$i][2].'" "'.$campos[$i][3].'" value="'.$dados[$campos[$i][2]].'"  />
+					                    <span class="input-group-addon"><span class="fa fa-calendar"></span>
+					                    </span>
+					                </div>
+					            </div>';
+			    break;
+				case 'hour':
+					if (!$isIncluded) {
+						$campo = '<link rel="stylesheet" href="'.base_url().'assets/css/bootstrap-datetimepicker.min.css">
+									<script src="'.base_url().'assets/js/moment.js"></script>
+									<script src="'.base_url().'assets/js/bootstrap-datetimepicker.min.js"></script>
+									<script>
+									$(window).load(function() {
+										$(".date").datetimepicker({
+											pick12HourFormat: false,
+											pickDate: false,
+											pickSeconds: false,
+											format: "HH:mm"
+										});
+									});
+								</script>';
+						$campo .= '<div class="form-group">
+			                <div class="input-group date">
+			                    <input type="text" class="form-control" name="'.$campos[$i][2].'" "'.$campos[$i][3].'" value="'.$dados[$campos[$i][2]].'"  />
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+			                    </span>
+			                </div>
+			            </div>';
+						$isIncluded = true;
+					}else
+						$campo = '<div class="form-group">
+			                <div class="input-group date">
+			                    <input type="text" class="form-control" name="'.$campos[$i][2].'" "'.$campos[$i][3].'" value="'.$dados[$campos[$i][2]].'"  />
+			                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+			                    </span>
+			                </div>
+			            </div>';
+				break;
+
+				case 'video':
+					if (!$isIncluded) {
+						$campo = '
+						<script>
+							$(window).load(function() {
+								if ($(window).width() > 768) {
+									$("iframe.video").attr("src",$("input.video").val());
+									$("input.video").change(function() {
+										var correctURL = $(this).val().replace("watch?v=","embed/");
+										$(this).val(correctURL);
+										$("iframe.video").attr("src",correctURL);
+									});
+								}else
+									$("iframe.video").parent().hide();
+							});
+						</script>';
+						$campo .= "<iframe src='".$dados[$campos[$i][2]]."'' frameborder='0' allowfullscreen='' class='video img-responsive'></iframe>";
+					}else
+						$campo = "<iframe src='".$dados[$campos[$i][2]]."'' frameborder='0' allowfullscreen='' class='video img-responsive'></iframe>";
 					break;
 				
 				default:
@@ -278,7 +400,7 @@
 	
 	//function by Wesley Ferreira dos Santos para inserir no banco, passando como parametros 
 		//um array com os nomes dos campos no bd
-		//uma string que È o nome da tabela
+		//uma string que √© o nome da tabela
 		//um array com os dados, na mesma sequencia do array de campos
 		
 	    /*function inserir($campos, $tabela, $dados){
@@ -302,7 +424,7 @@
 	    }*/
 	    
 		//function by Wesley Ferreira dos Santos
-	    //cria uma string com os cÛdigos html de um form e dos campos de acordo com os campos especificados
+	    //cria uma string com os c√≥digos html de um form e dos campos de acordo com os campos especificados
 	    /*function gerarCampos($campos){
 	    	$formulario = "<form method='post' action=''>";
 	    	//for(){}

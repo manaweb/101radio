@@ -2,6 +2,11 @@
 	class Home extends CI_Controller {	 
 		
 		function index() {
+
+			if ($this->session->userdata('log_in') != NULL) 
+				$data['loginPainel'] = utf8_encode('<div class="alert alert-success text-center">Você está logado no painel de controle. <strong><a href="'.$base_url.'painel">Clique aqui para ir ao painel</a></strong></div>');
+			else
+				$data['loginPainel'] = '';
 			
 		    if ($this->session->userdata('site_titulo') == NULL) {
 		    	$query = $this->db->query("SELECT * FROM informacoes");

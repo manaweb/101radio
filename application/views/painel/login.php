@@ -2,7 +2,7 @@
 <html>
 	<?php
 		if ($this->session->userdata('log_in') != NULL)
-			redirect('painel/');
+			redirect("painel/login");
 		else
 			$this->load->view('shared/header');
 	?>

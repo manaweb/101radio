@@ -29,7 +29,7 @@
       <script src="{base_url}assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
       <script src="{base_url}assets/js/vendor/jquery-1.10.1.min.js"></script>
       <script src="{base_url}assets/js/vendor/bootstrap.min.js"></script>
-       <script src="{base_url}assets/js/swipe.js"></script>
+      <script src="{base_url}assets/js/swipe.js"></script>
       <script src="{base_url}assets/js/main.js"></script>
       <script>
         if (document.documentMode >= 9)

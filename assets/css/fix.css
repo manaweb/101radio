@@ -1,0 +1,8 @@
+body {
+	margin-left: -15px;
+}
+@media (max-width:768px) {
+	body {
+		margin-left: 0px;
+	}
+}

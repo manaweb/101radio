@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <?php $this->load->view('shared/header'); ?>
-
   <body>
-
     <div id="wrapper">
 
       <!-- Sidebar -->

@@ -1,8 +1,9 @@
 	<?php
-		if (strpos($_SERVER['REQUEST_URI'],'login') === false) {
+		$request = $_SERVER['REQUEST_URI'];
+		if (strpos($request,'login') === false) {
 			if ($this->session->userdata('log_in') === false) {
-				$this->session->set_userdata('redirect',$_SERVER['REQUEST_URI']);
-				redirect('painel/login');
+				$this->session->set_userdata('request',$request);
+				redirect("painel/login");
 			}else {
 				if ($this->session->userdata('menu_avatar') == NULL) {
 					$tavatar_path = "assets/img/avatar/";
@@ -18,10 +19,10 @@
 		                <li><a href="#" class="text-center"><img src="'.$base_url.$avatar_path.'user.png'.'"></a></li>');
 					}
 				}
-				if ($this->session->userdata('redirect') != NULL) {
-					$redirect = $this->session->userdata('redirect');
-					$this->session->unset_userdata('redirect');
-					redirect($base_url.$redirect);
+				$sRequest = $this->session->userdata('request');
+				if ($sRequest != NULL) {
+					$this->session->unset_userdata('request');
+					redirect($base_url.$sRequest);
 				}
 			}
 		}

@@ -18,13 +18,13 @@
 			        	<div class="row">
 			        		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 				        		<div class="pull-left">
-	        						<a href="javascript:void(0);" class="variados-icones print"><span>IMPRIMIR</span></a>
+	        						<a href="javascript:void(0);" class="variados-icones print hidden-xs hidden-sm"><span>IMPRIMIR</span></a>
 					        	</div>
 					        	<div class="pull-right">
 				        			<ul class="list-inline tamanho-texto">
 				        				<li><span>Tamanho do texto:</span></li>
-				        				<li><a href="javascript:void(0);">A<span class="min">+</span></a></li>
-				        				<li><a href="javascript:void(0);">A<span class="min">-</span></a></li>
+				        				<li><a href="javascript:void(0);" id="max">A<span class="min">+</span></a></li>
+				        				<li><a href="javascript:void(0);" id="min">A<span class="min">-</span></a></li>
 				        			</ul>
 					        	</div>
 					        	<hr>
@@ -53,10 +53,13 @@ Ao longo de suas três décadas de história, a Alvorada FM busca o aperfeiçoam
 					        		<h5>Comercial</h5>
 					        		<hr>
 					        	</div>
-					        	<div class="versao-mobile">
+					        	<div class="versao-mobile text-center">
 				        			<a href="javascript:void(0);" data-toggle="tooltip" title="Entre pelo seu celular e conheça nosso site em sua versão para celular!">
 				        				<img src="{base_url}assets/img/mobile.png" class="img-responsive" alt="Conheça a versão mobile">
 				        			</a>
+				        			<span>
+				        				Conheça nossa versão mobile
+				        			</span>
 				        		</div>
 				        	</div>
 				        </div>

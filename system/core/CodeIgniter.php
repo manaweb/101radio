@@ -42,6 +42,7 @@
  *
  */
 	define('CI_CORE', FALSE);
+	date_default_timezone_set('America/Sao_Paulo');
 
 /*
  * ------------------------------------------------------
